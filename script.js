@@ -17,14 +17,11 @@ let reservations = JSON.parse(localStorage.getItem('study_room_res')) || [];
 let selPeriod = null;
 let selSeatNum = null;
 
-// 초기화
 function init() { renderSlots(); }
 
-// 로컬 저장소 저장
 function saveToLocal() { localStorage.setItem('study_room_res', JSON.stringify(reservations)); }
 
-// 시간대 버튼 생성
-let isTestMode = false; // 기본은 제한 상태
+let isTestMode = false;
 
 function toggleTestMode() {
     isTestMode = !isTestMode;
@@ -54,10 +51,8 @@ function renderSlots() {
         btn.onclick = () => {
             const now = new Date();
             const currentHour = now.getHours();
-
-            // 테스트 모드가 아닐 때만 시간 체크
+            
             if (!isTestMode) {
-                // 오전 9시 ~ 밤 12시 사이 차단
                 if (currentHour >= 9 && currentHour < 24) {
                     alert("현재는 예약할 수 없는 시간입니다. (00:00 - 8:59 예약 가능)");
                     return; 
@@ -72,7 +67,6 @@ function renderSlots() {
     });
 }
 
-// 좌석 선택 단계로 이동
 function toStep2() {
     const name = document.getElementById('user-name').value.trim();
     const sid = document.getElementById('user-id').value.trim();
@@ -88,7 +82,6 @@ function toStep2() {
     renderMap();
 }
 
-// 좌석 맵 그리기
 function renderMap() {
     const map = document.getElementById('seat-map');
     map.innerHTML = '';
@@ -113,7 +106,6 @@ function renderMap() {
     });
 }
 
-// 예약 실행
 function handleReserve() {
     if(!selSeatNum) return alert("좌석을 선택해주세요.");
     if(confirm(`${selPeriod.label} - ${selSeatNum}번 좌석으로 예약하시겠습니까?`)) {
@@ -128,7 +120,6 @@ function handleReserve() {
     }
 }
 
-// 화면 전환 함수
 function showView(v) {
     ['view-step1', 'view-step2', 'view-auth', 'view-my-list'].forEach(id => document.getElementById(id).classList.add('hidden'));
     document.getElementById('view-' + v).classList.remove('hidden');
@@ -136,10 +127,8 @@ function showView(v) {
     document.getElementById('tab-my').classList.toggle('active', v === 'auth' || v === 'my-list');
 }
 
-// 홈으로 가기 (초기화)
 function goToHome() { selPeriod = null; selSeatNum = null; renderSlots(); showView('step1'); }
 
-// 내 예약 확인 로직
 function checkMyReservation() {
     const name = document.getElementById('auth-name').value.trim();
     const sid = document.getElementById('auth-id').value.trim();
@@ -156,7 +145,6 @@ function checkMyReservation() {
     `).join('') : '<p style="text-align:center; padding:30px; color:#999;">내역이 없습니다.</p>';
 }
 
-// 예약 취소
 function cancelRes(id) {
     if(confirm("정말로 예약을 취소하시겠습니까?")) {
         reservations = reservations.filter(r => r.id !== id);
