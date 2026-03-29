@@ -29,11 +29,11 @@ function toggleTestMode() {
     
     if (isTestMode) {
         btn.innerText = "ON";
-        btn.classList.add('is-on'); // CSS 클래스 추가
+        btn.classList.add('is-on');
         alert("테스트 모드: 시간 제한이 해제되었습니다.");
     } else {
         btn.innerText = "OFF";
-        btn.classList.remove('is-on'); // CSS 클래스 제거
+        btn.classList.remove('is-on');
         alert("일반 모드: 시간 제한이 적용됩니다.");
     }
 }
