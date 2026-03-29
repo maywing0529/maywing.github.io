@@ -1,0 +1,128 @@
+:root {
+    --bg: #f9fafb;
+    --surface: #ffffff;
+    --wall: #1f2937;
+    --partition: #e5e7eb;
+    --text: #111827;
+    --accent: #2563eb;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: 'Noto Sans KR', sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    padding: 1rem; 
+}
+
+.container { 
+    max-width: 650px; 
+    margin: 0 auto; 
+    background: var(--surface); 
+    padding: 20px; 
+    border-radius: 12px; 
+    border: 1px solid #eee; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); ;
+}
+
+h1 { font-size: 20px; text-align: center; margin-bottom: 20px; color: var(--text); }
+
+/* 관리자 버튼 기본 스타일 (OFF 상태) */
+#admin-toggle {
+    font-size: 10px; 
+    opacity: 0.3; 
+    background: none; 
+    border: 1px solid #ccc; 
+    cursor: pointer;
+    transition: all 0.3s; /* 색상이 부드럽게 변하게 함 */
+}
+
+/* ON 상태일 때의 스타일 */
+#admin-toggle.is-on {
+    opacity: 1;
+    color: #2563eb;
+    background-color: #2563eb; /* 빨간색 배경 */
+    border-color: #2563eb;
+    font-weight: bold;
+}
+
+/* 네비게이션 탭 */
+.nav-tabs { display: flex; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 5px; border-radius: 10px; }
+.nav-tab { flex: 1; padding: 12px; border: none; background: none; cursor: pointer; border-radius: 8px; font-weight: 500; color: #6b7280; }
+.nav-tab.active { background: white; color: var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+/* 입력창 스타일 */
+.form-box { margin-bottom: 15px; }
+.form-box label { display: block; font-size: 13px; margin-bottom: 6px; font-weight: 700; }
+.input-field { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; margin-bottom: 10px; font-size: 14px; outline-color: var(--accent); }
+
+/* 시간 버튼 */
+.slot-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+.slot-btn { padding: 12px; border: 2px solid #e5e7eb; border-radius: 10px; cursor: pointer; text-align: center; background: white; font-size: 14px; }
+.slot-btn.active { border-color: var(--accent); background: #eff6ff; color: var(--accent); font-weight: 700; }
+
+/* 좌석 배치도 (화면 가득 채우기) */
+.map-wrapper { 
+    width: 100%; 
+    overflow-x: hidden; 
+    margin: 10px 0;
+    border: 1px solid #f3f4f6;
+    border-radius: 8px;
+}
+
+.map-container { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 12px; 
+    padding: 15px; 
+    width: 100%; 
+}
+
+.seat-row-group { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    gap: 8px; 
+}
+
+.row-num { 
+    width: 35px; height: 35px; border: 2px solid var(--wall); 
+    display: flex; align-items: center; justify-content: center; 
+    font-weight: 800; font-size: 12px; background: #f3f4f6; flex-shrink: 0; 
+}
+
+.thick-wall { width: 6px; height: 35px; background: var(--wall); flex-shrink: 0; }
+
+.seat-unit { flex: 1; display: flex; align-items: center; gap: 2px; }
+
+.seat { 
+    width: 100%; 
+    aspect-ratio: 1/1; 
+    max-width: 50px; 
+    border: none; 
+    border-radius: 6px; 
+    font-weight: 700; 
+    color: white; 
+    cursor: pointer; 
+    background: var(--success); 
+    font-size: clamp(10px, 3vw, 14px);
+    transition: all 0.2s;
+}
+
+.seat.occupied { background: var(--danger); cursor: not-allowed; }
+.seat.selected { background: var(--warning); color: #000; box-shadow: 0 0 0 3px var(--accent); transform: scale(1.05); z-index: 1; }
+
+.partition { width: 2px; height: 20px; background: var(--partition); flex-shrink: 0; }
+
+.btn-main { width: 100%; padding: 16px; background: var(--accent); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; }
+
+.legend { display: flex; justify-content: center; gap: 12px; margin-bottom: 10px; font-size: 12px; }
+.dot { width: 10px; height: 10px; display: inline-block; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+
+.hidden { display: none; }
+.res-card { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; background: white; border-radius: 8px; margin-bottom: 8px; border: 1px solid #f3f4f6; }
