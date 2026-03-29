@@ -31,41 +31,35 @@ body {
 
 h1 { font-size: 20px; text-align: center; margin-bottom: 20px; color: var(--text); }
 
-/* 관리자 버튼 기본 스타일 (OFF 상태) */
 #admin-toggle {
     font-size: 10px; 
     opacity: 0.3; 
     background: none; 
     border: 1px solid #ccc; 
     cursor: pointer;
-    transition: all 0.3s; /* 색상이 부드럽게 변하게 함 */
+    transition: all 0.3s;
 }
 
-/* ON 상태일 때의 스타일 */
 #admin-toggle.is-on {
     opacity: 1;
     color: #2563eb;
-    background-color: #2563eb; /* 빨간색 배경 */
+    background-color: #2563eb;
     border-color: #2563eb;
     font-weight: bold;
 }
 
-/* 네비게이션 탭 */
 .nav-tabs { display: flex; gap: 5px; margin-bottom: 20px; background: #f3f4f6; padding: 5px; border-radius: 10px; }
 .nav-tab { flex: 1; padding: 12px; border: none; background: none; cursor: pointer; border-radius: 8px; font-weight: 500; color: #6b7280; }
 .nav-tab.active { background: white; color: var(--accent); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-/* 입력창 스타일 */
 .form-box { margin-bottom: 15px; }
 .form-box label { display: block; font-size: 13px; margin-bottom: 6px; font-weight: 700; }
 .input-field { width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; margin-bottom: 10px; font-size: 14px; outline-color: var(--accent); }
 
-/* 시간 버튼 */
 .slot-grid { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
 .slot-btn { padding: 12px; border: 2px solid #e5e7eb; border-radius: 10px; cursor: pointer; text-align: center; background: white; font-size: 14px; }
 .slot-btn.active { border-color: var(--accent); background: #eff6ff; color: var(--accent); font-weight: 700; }
 
-/* 좌석 배치도 (화면 가득 채우기) */
 .map-wrapper { 
     width: 100%; 
     overflow-x: hidden; 
